@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--  เพศ  -->
+    <string-array name="gender_array">
+        <item>Male</item>
+        <item>Female</item>
+    </string-array>
+
+    <!--  กิจกรรม  -->
+    <string-array name="activity_array">
+        <item>No exercise</item>
+        <item>Light exercise</item>
+        <item>Normal exercise</item>
+        <item>Heavy exercise</item>
+    </string-array>
+</resources>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--  Text  -->
+    <dimen name="title_size">20sp</dimen>
+    <dimen name="text_size">16sp</dimen>
+    <dimen name="small_size">14sp</dimen>
+
+    <!--  Box  -->
+    <dimen name="box_height">60dp</dimen>
+    <dimen name="box_radius">20dp</dimen>
+    <dimen name="box_padding">16dp</dimen>
+
+    <!--  Layout  -->
+    <dimen name="margin_large">24dp</dimen>
+    <dimen name="margin_medium">16dp</dimen>
+    <dimen name="padding_medium">16dp</dimen>
+    <dimen name="margin_small">8dp</dimen>
+</resources>
