@@ -4,12 +4,11 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
-    <!--  Box Gradient  -->
-    <color name="box_start">#1E90FF</color>
-    <color name="box_end">#99BADD</color>
+    <!--  Box  -->
+    <color name="box_start">#99BADD</color>
+    <color name="box_end">#ACDBF3</color>
+    <color name="shadow">#33000000</color>
 
-    <!--  Box State  -->
-    <color name="box_start_press">#1A7AD8</color>
-    <color name="box_end_press">#7FA3C8</color>
+
 
 </resources>

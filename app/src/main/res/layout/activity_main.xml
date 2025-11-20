@@ -19,6 +19,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/margin_medium"
             android:text="@string/app_title"
             android:textSize="@dimen/title_size"
             android:textStyle="bold" />
@@ -29,88 +30,31 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="@dimen/margin_medium"
+            android:layout_marginTop="@dimen/margin_extralarge"
             android:text="@string/calculate_water"
-            android:textSize="@dimen/title_size" />
+            android:textSize="@dimen/title_size"
+            android:textStyle="bold"/>
 
-        <!-- กล่องแสดงหลอดน้ำ -->
+        <!-- กล่องแสดงปริมาณน้ำที่ต้องดื่มทั้งหมด -->
         <LinearLayout
             android:id="@+id/layoutWaterBox"
             android:layout_width="match_parent"
             android:layout_height="200dp"
             android:layout_marginTop="@dimen/margin_large"
+            android:elevation="3dp"
             android:background="@drawable/box"
             android:orientation="vertical"
             android:padding="@dimen/padding_medium"
             android:gravity="center_vertical">
 
-            <!-- จะเปลี่ยนค่าตรง max ในโค้ดให้ตรงกับที่คำนวณได้ -->
-            <ProgressBar
-                android:id="@+id/progressWater"
-                style="?android:attr/progressBarStyleHorizontal"
-                android:layout_width="match_parent"
-                android:layout_height="24dp"
-                android:max="2500"
-                android:progress="0"
-                android:progressTint="@android:color/holo_green_light"
-                android:background="@android:color/white" />
-
-            <!-- ตอนนี้ดื่มเท่าไหร่ / ทั้งหมด -->
+            <!-- ปริมาณน้ำทั้งหมดที่ต้องดื่ม -->
             <TextView
-                android:id="@+id/tvWaterStatus"
+                android:id="@+id/tvWaterTotal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="@dimen/margin_small"
-                android:text="@string/todo"
-                android:textSize="@dimen/text_size" />
-
-            <!-- เหลือต้องดื่มอีกเท่าไหร่ -->
-            <TextView
-                android:id="@+id/tvWaterRemaining"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="@dimen/margin_small"
-                android:text="@string/remaining"
-                android:textSize="@dimen/small_size" />
-        </LinearLayout>
-
-        <!-- กล่องเลือกเพศ -->
-        <LinearLayout
-            android:id="@+id/layoutGender"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:layout_marginTop="@dimen/margin_large"
-            android:background="@drawable/box"
-            android:orientation="horizontal"
-            android:gravity="center_vertical"
-            android:paddingLeft="@dimen/padding_medium"
-            android:paddingRight="@dimen/padding_medium"
-            android:clickable="true"
-            android:focusable="true">
-
-            <TextView
-                android:id="@+id/tvGenderLabel"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/label_gender"
-                android:textSize="@dimen/text_size" />
-
-            <!-- แสดงค่าที่เลือก เช่น ชาย / หญิง -->
-            <TextView
-                android:id="@+id/tvGenderValue"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:layout_marginStart="@dimen/margin_small"
-                android:text="@string/empty"
-                android:textSize="@dimen/text_size" />
-
-            <ImageView
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:src="@drawable/gender" />
+                android:layout_gravity="center_horizontal"
+                android:text="@string/total_water"
+                android:textSize="@dimen/extralarge_size" />
         </LinearLayout>
 
         <!-- กล่องใส่น้ำหนัก -->
@@ -118,7 +62,8 @@
             android:id="@+id/layoutWeight"
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:layout_marginTop="@dimen/margin_medium"
+            android:layout_marginTop="@dimen/margin_large"
+            android:elevation="3dp"
             android:background="@drawable/box"
             android:orientation="horizontal"
             android:gravity="center_vertical"
@@ -154,7 +99,8 @@
             android:id="@+id/layoutActivity"
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:layout_marginTop="@dimen/margin_medium"
+            android:layout_marginTop="@dimen/margin_large"
+            android:elevation="3dp"
             android:background="@drawable/box"
             android:orientation="horizontal"
             android:gravity="center_vertical"
@@ -192,6 +138,7 @@
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:layout_marginTop="@dimen/margin_large"
+            android:elevation="3dp"
             android:background="@drawable/box"
             android:text="@string/button_calculate"
             android:textAllCaps="false"

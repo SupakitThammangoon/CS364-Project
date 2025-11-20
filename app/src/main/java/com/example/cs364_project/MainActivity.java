@@ -1,28 +1,37 @@
 package com.example.cs364_project;
 
+import android.animation.ValueAnimator;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.animation.DecelerateInterpolator;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
-import android.widget.ProgressBar;
 import android.widget.TextView;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import android.content.Intent;
+
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
 
-    private ProgressBar progressWater;
-    private TextView tvWaterStatus, tvWaterRemaining;
-    private TextView tvGenderValue, tvActivityValue;
+    // แสดง "ปริมาณน้ำทั้งหมดที่ควรดื่มต่อวัน"
+    private TextView tvWaterTotal;
+    // แสดงระดับกิจกรรมที่เลือก
+    private TextView tvActivityValue;
+    // ช่องกรอกน้ำหนัก
     private EditText edtWeight;
 
-    private String gender = null;         // "male" หรือ "female"
-    private String activityLevel = null;  // "none", "light", "medium", "high"
+    // "none", "light", "medium", "high"
+    private String activityLevel = null;
     private int totalMl = 0;
-    private int currentMl = 0;            // ตอนนี้ยังไม่เก็บดื่มจริง = 0 ไปก่อน
+
+    private int lastTotalMl = 0;          // ค่าที่แสดงอยู่ก่อนหน้า
+    private ValueAnimator waterAnimator;  // เอาไว้เก็บ animator ปัจจุบัน
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,24 +39,17 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         // 1) ผูก View กับ id จาก XML
-        progressWater      = findViewById(R.id.progressWater);
-        tvWaterStatus      = findViewById(R.id.tvWaterStatus);
-        tvWaterRemaining   = findViewById(R.id.tvWaterRemaining);
-        tvGenderValue      = findViewById(R.id.tvGenderValue);
-        tvActivityValue    = findViewById(R.id.tvActivityValue);
-        edtWeight          = findViewById(R.id.edtWeight);
+        tvWaterTotal     = findViewById(R.id.tvWaterTotal);
+        tvActivityValue  = findViewById(R.id.tvActivityValue);
+        edtWeight        = findViewById(R.id.edtWeight);
 
-        LinearLayout layoutGender   = findViewById(R.id.layoutGender);
         LinearLayout layoutActivity = findViewById(R.id.layoutActivity);
         Button btnCalculate         = findViewById(R.id.btnCalculate);
 
-        // 2) คลิกเลือกเพศ
-        layoutGender.setOnClickListener(v -> showGenderDialog());
-
-        // 3) คลิกเลือกกิจกรรม
+        // 2) คลิกเลือกกิจกรรม
         layoutActivity.setOnClickListener(v -> showActivityDialog());
 
-        // 4) น้ำหนักเปลี่ยนเมื่อพิมพ์ → คำนวณใหม่ทุกครั้ง
+        // 3) น้ำหนักเปลี่ยนเมื่อพิมพ์ → คำนวณใหม่ทุกครั้ง
         edtWeight.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
@@ -61,28 +63,18 @@ public class MainActivity extends AppCompatActivity {
             public void afterTextChanged(Editable s) { }
         });
 
-        // 5) ปุ่มคำนวณปริมาณน้ำ → ไว้ไปหน้าถัดไป (ตอนนี้ใส่ TODO ไว้ก่อน)
+        // 4) ปุ่มคำนวณ (ตอนนี้ยังไม่ไปหน้าใหม่ แค่กันโค้ดพังไว้ก่อน)
         btnCalculate.setOnClickListener(v -> {
-            // TODO: เริ่ม Activity ใหม่และส่ง totalMl ไปด้วย
-            // ตัวอย่าง: startActivity(new Intent(this, ResultActivity.class));
+            // TODO: เริ่ม Activity ใหม่และส่ง totalMl ไปด้วย ถ้าจะมีหน้าผลลัพธ์
+            // ตัวอย่าง:
+            // Intent i = new Intent(MainActivity.this, ResultActivity.class);
+            // i.putExtra("TOTAL_ML", totalMl);
+            // startActivity(i);
         });
 
-        // ค่าตั้งต้น 0 / 0
+        // แสดงข้อความเริ่มต้น
         recalculate();
-    }
 
-    private void showGenderDialog() {
-        // ใช้ string-array จาก strings.xml
-        final String[] genderArray = getResources().getStringArray(R.array.gender_array);
-
-        new AlertDialog.Builder(this)
-                .setTitle(R.string.label_gender)
-                .setItems(genderArray, (dialog, which) -> {
-                    tvGenderValue.setText(genderArray[which]);
-                    gender = (which == 0) ? "male" : "female";
-                    recalculate();
-                })
-                .show();
     }
 
     private void showActivityDialog() {
@@ -103,50 +95,82 @@ public class MainActivity extends AppCompatActivity {
                 .show();
     }
 
-    // ฟังก์ชันคำนวณปริมาณน้ำรวม (ml) และอัปเดตหลอด + ข้อความ
+    // ฟังก์ชันคำนวณปริมาณน้ำรวม (ml) และอัปเดตข้อความในกล่อง layoutWaterBox
     private void recalculate() {
         String weightStr = edtWeight.getText().toString().trim();
 
-        if (weightStr.isEmpty() || gender == null || activityLevel == null) {
+        // ถ้ายังไม่กรอกน้ำหนัก หรือยังไม่เลือกกิจกรรม → ให้บอกผู้ใช้ก่อน
+        if (weightStr.isEmpty() || activityLevel == null) {
             totalMl = 0;
-        } else {
-            int weight = Integer.parseInt(weightStr);
 
-            // สูตรตัวอย่าง: 35 ml / kg + โบนัสตามกิจกรรม
-            double base = weight * 35.0;
-            double actBonus = 0;
-
-            switch (activityLevel) {
-                case "light":
-                    actBonus = 300;
-                    break;
-                case "medium":
-                    actBonus = 600;
-                    break;
-                case "high":
-                    actBonus = 900;
-                    break;
-                case "none":
-                default:
-                    actBonus = 0;
-                    break;
+            if (waterAnimator != null && waterAnimator.isRunning()) {
+                waterAnimator.cancel();
             }
 
-            // ผู้ชายเพิ่มอีกนิด (ตัวอย่าง)
-            if ("male".equals(gender)) {
-                base += 250;
-            }
+            lastTotalMl = 0;
 
-            totalMl = (int) Math.round(base + actBonus);
+            return;
         }
 
-        // ตั้งค่า ProgressBar
-        progressWater.setMax(Math.max(totalMl, 1));   // กัน division by zero
-        progressWater.setProgress(currentMl);
+        int weight = Integer.parseInt(weightStr);
 
-        // อัปเดตข้อความ
-        tvWaterStatus.setText(currentMl + " ml / " + totalMl + " ml");
-        int remaining = Math.max(totalMl - currentMl, 0);
-        tvWaterRemaining.setText("เหลือต้องดื่มอีก " + remaining + " ml");
+        // สูตร: 35 ml / kg + ระดับกิจกรรม
+        // ปริมาณน้ำควรอยู่ในช่วย 30-35 kg / ml
+        double base = weight * 35.0;
+        double actBonus;
+
+        switch (activityLevel) {
+            // กิจกรรมเบาเพิ่ม 300 - 500 ml เช่น ทำงานบ้าน, โยคะเบาๆ
+            case "light":
+                actBonus = 300;
+                break;
+            // กิจกรรมปานกลางเพิ่ม 525 - 800 ml เช่น การเดินเร็ว, เต้นเเอโรบิก
+            case "medium":
+                actBonus = 600;
+                break;
+            // กิจกรรมสูงเพิ่ม 600 - 1000 ml เช่น HIIT, เตะบอล
+            case "high":
+                actBonus = 900;
+                break;
+            case "none":
+            default:
+                actBonus = 0;
+                break;
+        }
+
+        totalMl = (int) Math.round(base + actBonus);
+
+        // แสดง น้ำที่ควรดื่มทั้งหมดหน่วย ml ต่อวัน"
+        // ถ้าค่าใหม่เท่ากับค่าเดิม ไม่ต้อง animate
+        if (totalMl == lastTotalMl) {
+            tvWaterTotal.setText(totalMl + " ml");
+            return;
+        }
+
+        // เริ่มทำ animation จาก lastTotalMl ไป totalMl
+        animateWaterTotal(lastTotalMl, totalMl);
+
+        // เก็บค่าใหม่ไว้ใช้รอบหน้า
+        lastTotalMl = totalMl;
     }
+
+    // อนิเมชั่น เปลี่ยนค่าปริมาณน้ำทั้งหมด
+    private void animateWaterTotal(int from, int to) {
+        // ถ้ามี animator เดิมวิ่งอยู่ให้ยกเลิก
+        if (waterAnimator != null && waterAnimator.isRunning()) {
+            waterAnimator.cancel();
+        }
+
+        waterAnimator = ValueAnimator.ofInt(from, to);
+        waterAnimator.setDuration(600); // 0.6 วินาที
+        waterAnimator.setInterpolator(new DecelerateInterpolator());
+
+        waterAnimator.addUpdateListener(animation -> {
+            int value = (int) animation.getAnimatedValue();
+            tvWaterTotal.setText(value + " ml");
+        });
+
+        waterAnimator.start();
+    }
+
 }
