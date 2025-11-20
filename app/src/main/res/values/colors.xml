@@ -9,6 +9,9 @@
     <color name="box_end">#ACDBF3</color>
     <color name="shadow">#33000000</color>
 
+    <!--  Progress Bar  -->
+    <color name="bar">#00FF78</color>
+
 
 
 </resources>

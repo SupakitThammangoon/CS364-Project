@@ -1,0 +1,21 @@
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- background ของ progress bar -->
+    <item android:id="@android:id/background">
+        <shape android:shape="rectangle">
+            <corners android:radius="20dp"/>
+            <solid android:color="@color/white"/>
+        </shape>
+    </item>
+
+    <!-- ส่วนที่เป็น progress -->
+    <item android:id="@android:id/progress">
+        <clip>
+            <shape android:shape="rectangle">
+                <corners android:radius="30dp"/>
+                <solid android:color="@color/bar"/>
+            </shape>
+        </clip>
+    </item>
+
+</layer-list>

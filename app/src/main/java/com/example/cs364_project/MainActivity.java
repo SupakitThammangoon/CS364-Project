@@ -63,13 +63,12 @@ public class MainActivity extends AppCompatActivity {
             public void afterTextChanged(Editable s) { }
         });
 
-        // 4) ปุ่มคำนวณ (ตอนนี้ยังไม่ไปหน้าใหม่ แค่กันโค้ดพังไว้ก่อน)
+        // 4) ปุ่มคำนวณ
         btnCalculate.setOnClickListener(v -> {
-            // TODO: เริ่ม Activity ใหม่และส่ง totalMl ไปด้วย ถ้าจะมีหน้าผลลัพธ์
-            // ตัวอย่าง:
-            // Intent i = new Intent(MainActivity.this, ResultActivity.class);
-            // i.putExtra("TOTAL_ML", totalMl);
-            // startActivity(i);
+            // TODO: เริ่ม Activity ใหม่และส่ง totalMl ไปยังหน้า HomeActivity ถ้าจะมีหน้าผลลัพธ์
+            Intent intent = new Intent(MainActivity.this, HomeActivity.class);
+            intent.putExtra("TOTAL_ML", totalMl);
+            startActivity(intent);
         });
 
         // แสดงข้อความเริ่มต้น
@@ -143,7 +142,8 @@ public class MainActivity extends AppCompatActivity {
         // แสดง น้ำที่ควรดื่มทั้งหมดหน่วย ml ต่อวัน"
         // ถ้าค่าใหม่เท่ากับค่าเดิม ไม่ต้อง animate
         if (totalMl == lastTotalMl) {
-            tvWaterTotal.setText(totalMl + " ml");
+            String ml = getString(R.string.ml);
+            tvWaterTotal.setText(totalMl + " " + ml);
             return;
         }
 
@@ -167,7 +167,8 @@ public class MainActivity extends AppCompatActivity {
 
         waterAnimator.addUpdateListener(animation -> {
             int value = (int) animation.getAnimatedValue();
-            tvWaterTotal.setText(value + " ml");
+            String ml = getString(R.string.ml);
+            tvWaterTotal.setText(value + " " + ml);
         });
 
         waterAnimator.start();

@@ -11,10 +11,37 @@
     <string name="label_activity">Activity : </string>
     <string name="empty">-</string>
     <string name="button_calculate">Calculate Water</string>
+    <string name="ml">ml</string>
 
     <!--  menu  -->
     <string name="home">Home</string>
     <string name="history">History</string>
+
+    <!--  home  -->
+    <string name="goal">Today\'s Goal</string>
+    <string name="compare">0 ml / 0 ml</string>
+    <string name="add">Add Water</string>
+    <string name="add_drop">250 ml</string>
+    <string name="add_cup">500 ml</string>
+    <string name="add_bottle">750 ml</string>
+    <string name="hint_add">Enter water amount (ml)</string>
+    <string name="warn1">Enter water amount (ml)</string>
+    <string name="warn2">Invalid Input</string>
+    <string name="warn3">Water amount must be greater than 0</string>
+
+    <!--  Notification  -->
+    <string name="notify">Notification</string>
+    <string name="remind">Remind me every</string>
+    <string name="hint_notify">minute</string>
+    <string name="time_range">Select time range (minute)</string>
+    <string name="time_range_error">Invalid</string>
+    <string name="toast_1">Save notification every</string>
+    <string name="open_notify">Enable Notification</string>
+    <string name="close_notify">Disable Notification</string>
+    <string name="ok">OK</string>
+    <string name="cancel">Cancel</string>
+    <string name="notify_title">Drink Up! 💧</string>
+    <string name="notify_message">Time to drink water.</string>
 
 
 </resources>
