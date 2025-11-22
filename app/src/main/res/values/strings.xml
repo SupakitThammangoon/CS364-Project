@@ -1,8 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--  ชื่อเเอปกับหัวข้อ  -->
     <string name="app_name">Hydro Tracker</string>
     <string name="app_title">Hydro Tracker</string>
     <string name="calculate_water">Calculate Water</string>
+
+    <!--  กิจกรรม  -->
+    <string name="no_exercise">No exercise</string>
+    <string name="light_exercise">Light exercise</string>
+    <string name="normal_exercise">Normal exercise</string>
+    <string name="heavy_exercise">Heavy_exercise</string>
 
     <!--  label ต่างๆ  -->
     <string name="total_water">0 ml</string>
@@ -15,9 +22,10 @@
 
     <!--  menu  -->
     <string name="home">Home</string>
+    <string name="goals">Goal</string>
     <string name="history">History</string>
 
-    <!--  home  -->
+    <!--  Goal  -->
     <string name="goal">Today\'s Goal</string>
     <string name="compare">0 ml / 0 ml</string>
     <string name="add">Add Water</string>
@@ -28,6 +36,7 @@
     <string name="warn1">Enter water amount (ml)</string>
     <string name="warn2">Invalid Input</string>
     <string name="warn3">Water amount must be greater than 0</string>
+    <string name="warn4">Please calculate your water intake first</string>
 
     <!--  Notification  -->
     <string name="notify">Notification</string>
@@ -41,7 +50,14 @@
     <string name="ok">OK</string>
     <string name="cancel">Cancel</string>
     <string name="notify_title">Drink Up! 💧</string>
-    <string name="notify_message">Time to drink water.</string>
+    <string name="notify_message">Take a shor break and have a sip of water!</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!--  History  -->
+    <string name="today_history">Today\'s History</string>
+    <string name="default_water_amount">0 ml</string>
+    <string name="default_time">00:00</string>
 
 
 </resources>

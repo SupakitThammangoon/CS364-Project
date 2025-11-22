@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="72dp"
+    android:orientation="horizontal"
+    android:gravity="center_vertical"
+    android:layout_marginBottom="8dp"
+    android:background="@drawable/box_water"
+    android:padding="12dp">
+
+    <!-- ไอคอนน้ำ -->
+    <ImageView
+        android:id="@+id/imgHistoryIcon"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/drop" />
+
+    <!-- ข้อความ -->
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:layout_marginStart="12dp">
+
+        <TextView
+            android:id="@+id/tvAmount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/default_water_amount"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tvTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/default_time"
+            android:textSize="14sp" />
+    </LinearLayout>
+
+    <!-- ปุ่มลบ -->
+    <ImageView
+        android:id="@+id/btnDelete"
+        android:layout_width="28dp"
+        android:layout_height="28dp"
+        android:src="@drawable/bin" />
+</LinearLayout>

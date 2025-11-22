@@ -3,10 +3,10 @@
 
     <!--  กิจกรรม  -->
     <string-array name="activity_array">
-        <item>No exercise</item>
-        <item>Light exercise</item>
-        <item>Normal exercise</item>
-        <item>Heavy exercise</item>
+        <item>@string/no_exercise</item>
+        <item>@string/light_exercise</item>
+        <item>@string/normal_exercise</item>
+        <item>@string/heavy_exercise</item>
     </string-array>
 
 </resources>

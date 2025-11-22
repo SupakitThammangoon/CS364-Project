@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".HomeFragment">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/main"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="@dimen/padding_medium">
+
+            <!--  App Title -->
+            <TextView
+                android:id="@+id/AppTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/margin_medium"
+                android:text="@string/app_title"
+                android:textSize="@dimen/title_size"
+                android:textStyle="bold" />
+
+            <!-- Subtitle -->
+            <TextView
+                android:id="@+id/Subtitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/margin_extralarge"
+                android:text="@string/calculate_water"
+                android:textSize="@dimen/title_size"
+                android:textStyle="bold"/>
+
+            <!-- กล่องแสดงปริมาณน้ำ -->
+            <LinearLayout
+                android:id="@+id/layoutWaterBox"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_marginTop="@dimen/margin_large"
+                android:elevation="3dp"
+                android:background="@drawable/box"
+                android:orientation="vertical"
+                android:padding="@dimen/padding_medium"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:id="@+id/tvWaterTotal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:text="@string/total_water"
+                    android:textSize="@dimen/extralarge_size" />
+            </LinearLayout>
+
+            <!-- กล่องใส่น้ำหนัก -->
+            <LinearLayout
+                android:id="@+id/layoutWeight"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginTop="@dimen/margin_large"
+                android:elevation="3dp"
+                android:background="@drawable/box"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:paddingLeft="@dimen/padding_medium"
+                android:paddingRight="@dimen/padding_medium">
+
+                <TextView
+                    android:id="@+id/tvWeightLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/label_weight"
+                    android:textSize="@dimen/text_size" />
+
+                <EditText
+                    android:id="@+id/edtWeight"
+                    android:layout_width="0dp"
+                    android:layout_height="48dp"
+                    android:layout_weight="1"
+                    android:layout_marginStart="@dimen/margin_small"
+                    android:inputType="number"
+                    android:hint="@string/label_weight_hint"
+                    android:maxLines="1"
+                    android:background="@android:color/transparent" />
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/scale" />
+            </LinearLayout>
+
+            <!-- กล่องเลือกกิจกรรม -->
+            <LinearLayout
+                android:id="@+id/layoutActivity"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginTop="@dimen/margin_large"
+                android:elevation="3dp"
+                android:background="@drawable/box"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:paddingLeft="@dimen/padding_medium"
+                android:paddingRight="@dimen/padding_medium"
+                android:clickable="true"
+                android:focusable="true">
+
+                <TextView
+                    android:id="@+id/tvActivityLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/label_activity"
+                    android:textSize="@dimen/text_size" />
+
+                <TextView
+                    android:id="@+id/tvActivityValue"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginStart="@dimen/margin_small"
+                    android:text="@string/empty"
+                    android:textSize="@dimen/text_size" />
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/activity" />
+            </LinearLayout>
+
+            <!-- ปุ่ม -->
+            <Button
+                android:id="@+id/btnCalculate"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginTop="@dimen/margin_large"
+                android:elevation="3dp"
+                android:background="@drawable/box"
+                android:text="@string/button_calculate"
+                android:textAllCaps="false"
+                android:textSize="@dimen/text_size" />
+
+        </LinearLayout>
+    </ScrollView>
+
+</FrameLayout>

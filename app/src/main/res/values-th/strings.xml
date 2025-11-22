@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--  ชื่อเเอปกับหัวข้อ  -->
+    <string name="app_name">Hydro Tracker</string>
+    <string name="app_title">Hydro Tracker</string>
+    <string name="calculate_water">คำนวณปริมาณน้ำที่ควรดื่ม</string>
+
+    <!--  กิจกรรม  -->
+    <string name="no_exercise">ไม่ออกกำลังกาย</string>
+    <string name="light_exercise">ออกกำลังกายเล็กน้อย</string>
+    <string name="normal_exercise">ออกกำลังกายปกติ</string>
+    <string name="heavy_exercise">ออกกำลังกายหนัก</string>
+
+    <!--  label ต่างๆ  -->
+    <string name="total_water">0 มล.</string>
+    <string name="label_weight">น้ำหนัก: </string>
+    <string name="label_weight_hint">กิโลกรัม (กก.)</string>
+    <string name="label_activity">กิจกรรม : </string>
+    <string name="empty">-</string>
+    <string name="button_calculate">คำนวณปริมาณน้ำ</string>
+    <string name="ml">มล.</string>
+
+    <!--  menu  -->
+    <string name="home">หน้าหลัก</string>
+    <string name="goals">เป้าหมาย</string>
+    <string name="history">ประวัติ</string>
+
+    <!--  Goal  -->
+    <string name="goal">เป้าหมายวันนี้</string>
+    <string name="compare">0 มล. / 0 มล.</string>
+    <string name="add">เพิ่มปริมาณน้ำ</string>
+    <string name="add_drop">250 มล.</string>
+    <string name="add_cup">500 มล.</string>
+    <string name="add_bottle">750 มล.</string>
+    <string name="hint_add">ระบุปริมาณน้ำ (มล.)</string>
+    <string name="warn1">ระบุปริมาณน้ำ (มล.)</string>
+    <string name="warn2">ข้อมูลไม่ถูกต้อง</string>
+    <string name="warn3">ปริมาณน้ำต้องมากกว่า 0 มล.</string>
+    <string name="warn4">กรุณาคำนวณปริมาณน้ำที่คุณดื่มก่อน</string>
+
+    <!--  Notification  -->
+    <string name="notify">การเเจ้งเตือน</string>
+    <string name="remind">เเจ้งเตือนทุกๆ</string>
+    <string name="hint_notify">นาที</string>
+    <string name="time_range">กรุณาเลือกช่วงเวลา (นาที)</string>
+    <string name="time_range_error">ข้อมูลไม่ถูกต้อง</string>
+    <string name="toast_1">บันทึกการเเจ้งเตือนทุกๆ</string>
+    <string name="open_notify">เปิดใช้งานการเเจ้งเตือน</string>
+    <string name="close_notify">ปิดใช้งานการเเจ้งเตือน</string>
+    <string name="ok">ตกลง</string>
+    <string name="cancel">ยกเลิก</string>
+    <string name="notify_title">ได้เวลาดื่มน้ำ! 💧</string>
+    <string name="notify_message">พักสักนิด เเล้วจิบน้ำสักหน่อย!</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!--  History  -->
+    <string name="today_history">ประวัติวันนี้</string>
+    <string name="default_water_amount">0 มล.</string>
+    <string name="default_time">00:00</string>
+
+</resources>

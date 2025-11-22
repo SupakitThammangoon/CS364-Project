@@ -7,6 +7,11 @@
         android:title="@string/home" />
 
     <item
+        android:id="@+id/nav_goal"
+        android:icon="@drawable/target"
+        android:title="@string/goals" />
+
+    <item
         android:id="@+id/nav_history"
         android:icon="@drawable/history"
         android:title="@string/history" />

@@ -16,7 +16,6 @@ public class BootReceiver extends BroadcastReceiver {
             long intervalMillis = prefs.getLong("interval_millis", 0L);
 
             if (isOn && intervalMillis > 0) {
-                // สร้าง Alarm ใหม่เหมือนใน HomeActivity.scheduleReminder()
                 ReminderScheduler.scheduleRepeatingAlarm(context, intervalMillis);
             }
         }

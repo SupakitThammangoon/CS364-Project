@@ -25,8 +25,13 @@ public class AlarmReceiver extends BroadcastReceiver {
         // 1) ปลุกหน้าจอ (ถ้าปิดอยู่)
         wakeScreen(context);
 
-        // 2) เตรียม Intent ให้กดแล้วเปิด HomeActivity
-        Intent openIntent = new Intent(context, HomeActivity.class);
+        // 2) เตรียม Intent ให้กดแล้วเปิด GoalFragment
+        Intent openIntent = new Intent(context, MainActivity.class);
+
+        // เปิด goal fragment
+        openIntent.putExtra("OPEN_FRAGMENT", "GOAL");
+
+        // ไว้ป้องกันเปิด Activity ซ้ำ
         openIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
 
         PendingIntent pendingIntent = PendingIntent.getActivity(
@@ -43,10 +48,10 @@ public class AlarmReceiver extends BroadcastReceiver {
         String title = context.getString(R.string.notify_title);
         String message = context.getString(R.string.notify_message);
         NotificationCompat.Builder builder = new NotificationCompat.Builder(context, CHANNEL_ID)
-                .setSmallIcon(R.drawable.applogo) // ใช้ไอคอนของคุณเอง
+                .setSmallIcon(R.drawable.applogo)
                 .setContentTitle(title)
                 .setContentText(message)
-                .setPriority(NotificationCompat.PRIORITY_HIGH) // ให้เด้งหัว (heads-up)
+                .setPriority(NotificationCompat.PRIORITY_HIGH)
                 .setAutoCancel(true)
                 .setContentIntent(pendingIntent);
 
@@ -65,14 +70,14 @@ public class AlarmReceiver extends BroadcastReceiver {
                         | PowerManager.ON_AFTER_RELEASE,
                 "cs364_project:WaterReminderWakeLock");
 
-        wl.acquire(3000); // ปลุกจอ ~3 วินาที แล้วปล่อยเอง
+        wl.acquire(3000);
     }
 
     private void createNotificationChannel(Context context) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             CharSequence name = "Water Reminder";
             String description = "Channel for water drinking reminders";
-            int importance = NotificationManager.IMPORTANCE_HIGH; // สำคัญสูง -> เด้งหัว
+            int importance = NotificationManager.IMPORTANCE_HIGH;
 
             NotificationChannel channel = new NotificationChannel(CHANNEL_ID, name, importance);
             channel.setDescription(description);
