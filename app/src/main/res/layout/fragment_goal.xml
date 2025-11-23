@@ -14,20 +14,20 @@
         <LinearLayout
             android:id="@+id/homeContent"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="16dp"
-            android:paddingBottom="56dp"
+            android:padding="@dimen/padding_medium"
             android:fitsSystemWindows="true">
 
             <!-- กล่องแสดงปริมาณน้ำวันนี้ -->
             <LinearLayout
                 android:id="@+id/layoutWaterToday"
                 android:layout_width="match_parent"
-                android:layout_height="200dp"
+                android:layout_height="wrap_content"
+                android:minHeight="@dimen/height_extralarge"
                 android:layout_marginTop="@dimen/margin_large"
                 android:background="@drawable/box"
-                android:elevation="3dp"
+                android:elevation="@dimen/elevation"
                 android:gravity="center"
                 android:orientation="vertical"
                 android:padding="@dimen/padding_medium">
@@ -47,7 +47,8 @@
                     android:id="@+id/progressBar"
                     style="?android:attr/progressBarStyleHorizontal"
                     android:layout_width="match_parent"
-                    android:layout_height="35dp"
+                    android:layout_height="wrap_content"
+                    android:minHeight="@dimen/height_medium"
                     android:layout_marginTop="@dimen/margin_large"
                     android:max="100"
                     android:progress="0"
@@ -70,7 +71,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/margin_large"
                 android:background="@drawable/box"
-                android:elevation="3dp"
+                android:elevation="@dimen/elevation"
                 android:orientation="vertical"
                 android:padding="@dimen/padding_medium">
 
@@ -94,16 +95,17 @@
                     <LinearLayout
                         android:id="@+id/btnAdd250"
                         android:layout_width="0dp"
-                        android:layout_height="80dp"
-                        android:layout_marginEnd="8dp"
+                        android:layout_height="wrap_content"
+                        android:minHeight="@dimen/height_btn"
+                        android:layout_marginEnd="@dimen/margin_small"
                         android:layout_weight="1"
                         android:background="@drawable/box_water"
                         android:gravity="center"
                         android:orientation="vertical">
 
                         <ImageView
-                            android:layout_width="30dp"
-                            android:layout_height="30dp"
+                            android:layout_width="@dimen/width_small"
+                            android:layout_height="@dimen/height_small"
                             android:src="@drawable/drop" />
 
                         <TextView
@@ -116,17 +118,18 @@
                     <LinearLayout
                         android:id="@+id/btnAdd500"
                         android:layout_width="0dp"
-                        android:layout_height="80dp"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginEnd="8dp"
+                        android:layout_height="wrap_content"
+                        android:minHeight="@dimen/height_btn"
+                        android:layout_marginStart="@dimen/margin_small"
+                        android:layout_marginEnd="@dimen/margin_small"
                         android:layout_weight="1"
                         android:background="@drawable/box_water"
                         android:gravity="center"
                         android:orientation="vertical">
 
                         <ImageView
-                            android:layout_width="30dp"
-                            android:layout_height="30dp"
+                            android:layout_width="@dimen/width_small"
+                            android:layout_height="@dimen/height_small"
                             android:src="@drawable/cup" />
 
                         <TextView
@@ -139,16 +142,17 @@
                     <LinearLayout
                         android:id="@+id/btnAdd750"
                         android:layout_width="0dp"
-                        android:layout_height="80dp"
-                        android:layout_marginStart="8dp"
+                        android:layout_height="wrap_content"
+                        android:minHeight="@dimen/height_btn"
+                        android:layout_marginStart="@dimen/margin_small"
                         android:layout_weight="1"
                         android:background="@drawable/box_water"
                         android:gravity="center"
                         android:orientation="vertical">
 
                         <ImageView
-                            android:layout_width="30dp"
-                            android:layout_height="30dp"
+                            android:layout_width="@dimen/width_small"
+                            android:layout_height="@dimen/height_small"
                             android:src="@drawable/bottle" />
 
                         <TextView
@@ -168,25 +172,27 @@
                     <EditText
                         android:id="@+id/edtCustomAmount"
                         android:layout_width="0dp"
-                        android:layout_height="48dp"
+                        android:layout_height="wrap_content"
+                        android:minHeight="@dimen/height_edit_text"
                         android:layout_weight="1"
                         android:background="@drawable/box_water"
                         android:hint="@string/hint_add"
                         android:inputType="number"
-                        android:paddingStart="16dp"
-                        android:paddingEnd="16dp" />
+                        android:paddingStart="@dimen/padding_medium"
+                        android:paddingEnd="@dimen/padding_medium" />
 
                     <LinearLayout
                         android:id="@+id/btnAddCustom"
                         android:layout_width="56dp"
-                        android:layout_height="48dp"
-                        android:layout_marginStart="8dp"
+                        android:layout_height="wrap_content"
+                        android:minHeight="@dimen/height_edit_text"
+                        android:layout_marginStart="@dimen/margin_small"
                         android:background="@drawable/box_water"
                         android:gravity="center">
 
                         <ImageView
-                            android:layout_width="24dp"
-                            android:layout_height="24dp"
+                            android:layout_width="@dimen/width_small"
+                            android:layout_height="@dimen/height_small"
                             android:src="@drawable/add" />
                     </LinearLayout>
                 </LinearLayout>
@@ -200,7 +206,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/margin_large"
                 android:background="@drawable/box"
-                android:elevation="3dp"
+                android:elevation="@dimen/elevation"
                 android:orientation="vertical"
                 android:padding="@dimen/padding_medium">
 
@@ -212,15 +218,15 @@
                     android:orientation="horizontal">
 
                     <ImageView
-                        android:layout_width="24dp"
-                        android:layout_height="24dp"
+                        android:layout_width="@dimen/width_small"
+                        android:layout_height="@dimen/height_small"
                         android:src="@drawable/bell" />
 
                     <TextView
                         android:id="@+id/tvReminderTitle"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="16dp"
+                        android:layout_marginStart="@dimen/margin_medium"
                         android:layout_weight="1"
                         android:text="@string/notify"
                         android:textSize="@dimen/text_size" />
@@ -228,9 +234,10 @@
                     <!-- สวิตช์เปิด/ปิด -->
                     <Switch
                         android:id="@+id/switchReminder"
-                        android:layout_width="48dp"
-                        android:layout_height="48dp"
-                        android:padding="5dp"/>
+                        android:layout_width="@dimen/height_edit_text"
+                        android:layout_height="@dimen/height_edit_text"
+                        android:padding="5dp"
+                        tools:ignore="UseSwitchCompatOrMaterialXml" />
                 </LinearLayout>
 
                 <!-- เส้นคั่น -->
@@ -258,36 +265,37 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
+                        android:layout_marginTop="@dimen/margin_medium"
                         android:gravity="center_vertical"
                         android:orientation="horizontal">
 
                         <EditText
                             android:id="@+id/edtInterval"
                             android:layout_width="0dp"
-                            android:layout_height="48dp"
+                            android:layout_height="wrap_content"
+                            android:minHeight="@dimen/height_edit_text"
                             android:layout_weight="1"
                             android:background="@drawable/box_water"
                             android:hint="@string/hint_notify"
                             android:focusable="false"
                             android:clickable="true"
                             android:inputType="none"
-                            android:paddingStart="16dp"
-                            android:paddingEnd="16dp"/>
+                            android:paddingStart="@dimen/padding_medium"
+                            android:paddingEnd="@dimen/padding_medium"/>
 
                         <!-- ปุ่มบันทึก/เพิ่มช่วงเวลา -->
                         <LinearLayout
                             android:id="@+id/btnSaveInterval"
                             android:layout_width="56dp"
                             android:layout_height="48dp"
-                            android:layout_marginStart="8dp"
+                            android:layout_marginStart="@dimen/margin_small"
                             android:background="@drawable/box_water"
                             android:gravity="center">
 
                             <ImageView
-                                android:layout_width="24dp"
-                                android:layout_height="24dp"
-                                android:src="@drawable/add" />
+                                android:layout_width="@dimen/width_small"
+                                android:layout_height="@dimen/height_small"
+                                android:src="@drawable/add"/>
                         </LinearLayout>
                     </LinearLayout>
                 </LinearLayout>

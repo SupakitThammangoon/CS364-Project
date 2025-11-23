@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:padding="16dp">
+        android:padding="@dimen/padding_medium">
 
         <!-- กล่องใหญ่ -->
         <LinearLayout
@@ -21,23 +21,24 @@
             android:layout_marginTop="@dimen/margin_medium"
             android:orientation="vertical"
             android:background="@drawable/box"
-            android:padding="16dp">
+            android:padding="@dimen/padding_medium">
 
             <TextView
                 android:id="@+id/tvHistoryTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
+                android:layout_marginBottom="@dimen/margin_small"
                 android:layout_gravity="center"
                 android:text="@string/today_history"
-                android:textSize="18sp"
+                android:textSize="@dimen/title_size"
                 android:textStyle="bold" />
 
             <ScrollView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:contentDescription="@null">
 
-                <!-- ตรงนี้จะเอาแต่ละ row มา add เข้าไปด้วยโค้ด -->
+                <!-- นำ row เข้ามาเพิ่ม -->
                 <LinearLayout
                     android:id="@+id/layoutHistoryList"
                     android:layout_width="match_parent"

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <!--  Text  -->
     <dimen name="extralarge_size">32sp</dimen>
     <dimen name="title_size">20sp</dimen>
@@ -10,11 +11,26 @@
     <dimen name="box_height">60dp</dimen>
     <dimen name="box_radius">20dp</dimen>
     <dimen name="box_padding">16dp</dimen>
+    <dimen name="elevation">3dp</dimen>
 
-    <!--  Layout  -->
+    <!--  Layout width/height  -->
+    <dimen name="height_x_extralarge">200dp</dimen>
+    <dimen name="height_extralarge">72dp</dimen>
+    <dimen name="height_btn">80dp</dimen>
+    <dimen name="height_large">60dp</dimen>
+    <dimen name="height_edit_text">48dp</dimen>
+    <dimen name="height_medium">40dp</dimen>
+    <dimen name="width_medium">40dp</dimen>
+    <dimen name="height_small">30dp</dimen>
+    <dimen name="width_small">30dp</dimen>
+
+    <!--  Layout 2 -->
     <dimen name="margin_extralarge">32dp</dimen>
+    <dimen name="padding_extralarge">32dp</dimen>
     <dimen name="margin_large">24dp</dimen>
+    <dimen name="padding_large">24dp</dimen>
     <dimen name="margin_medium">16dp</dimen>
     <dimen name="padding_medium">16dp</dimen>
     <dimen name="margin_small">8dp</dimen>
+    <dimen name="padding_small">8dp</dimen>
 </resources>
